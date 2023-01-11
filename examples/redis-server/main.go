@@ -8,7 +8,7 @@ import (
 	"sync"
 
 	"github.com/mymmsc/asio"
-	"github.com/mymmsc/goapi/redis"
+	"github.com/mymmsc/gox/redis"
 )
 
 var (
@@ -21,7 +21,7 @@ type conn struct {
 	addr string
 }
 
-func accept(loop *asio.EventLoop, ev *asio.Event) (error) {
+func accept(loop *asio.EventLoop, ev *asio.Event) error {
 	nfd, rsa, err := asio.Accept(ev.Fd)
 	if err != nil {
 		return err
@@ -38,7 +38,7 @@ func accept(loop *asio.EventLoop, ev *asio.Event) (error) {
 	return nil
 }
 
-func read(loop *asio.EventLoop, ev *asio.Event) (error) {
+func read(loop *asio.EventLoop, ev *asio.Event) error {
 	n, nerr := asio.Recv(ev.Fd, loop.Packet)
 	if nerr == nil || nerr == asio.SUCCESS {
 		is := ev.Context.(*asio.InputStream)
@@ -143,7 +143,7 @@ func read(loop *asio.EventLoop, ev *asio.Event) (error) {
 	return nerr
 }
 
-func write(loop *asio.EventLoop, ev *asio.Event) (error) {
+func write(loop *asio.EventLoop, ev *asio.Event) error {
 	n, err := asio.Send(ev.Fd, ev.Out)
 	if err == nil || err == asio.SUCCESS {
 		//

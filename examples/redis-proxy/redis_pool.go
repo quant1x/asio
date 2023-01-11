@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/mymmsc/asio"
-	"github.com/mymmsc/goapi/pool"
+	"github.com/mymmsc/gox/pool"
 	"time"
 )
 

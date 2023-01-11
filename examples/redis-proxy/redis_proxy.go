@@ -4,7 +4,7 @@ import (
 	"sync"
 
 	"github.com/mymmsc/asio"
-	"github.com/mymmsc/goapi/redis"
+	"github.com/mymmsc/gox/redis"
 )
 
 var (
@@ -29,7 +29,7 @@ type context struct {
 	group int // 分组
 }
 
-func accept(loop *asio.EventLoop, ev *asio.Event) (error) {
+func accept(loop *asio.EventLoop, ev *asio.Event) error {
 	nfd, rsa, err := asio.Accept(ev.Fd)
 	if err != nil {
 		return err
@@ -48,7 +48,7 @@ func accept(loop *asio.EventLoop, ev *asio.Event) (error) {
 	return nil
 }
 
-func close(loop *asio.EventLoop, ev *asio.Event) (error) {
+func close(loop *asio.EventLoop, ev *asio.Event) error {
 	ctx := ev.Context.(*context)
 	if ctx.side == PROXY_LOCAL {
 		lev := ev
@@ -70,7 +70,7 @@ func close(loop *asio.EventLoop, ev *asio.Event) (error) {
 	return nil
 }
 
-func read_local(loop *asio.EventLoop, ev *asio.Event) (error) {
+func read_local(loop *asio.EventLoop, ev *asio.Event) error {
 	n, nerr := asio.Recv(ev.Fd, loop.Packet)
 	if nerr == nil || nerr == asio.SUCCESS {
 		ctx := ev.Context.(*context)
@@ -163,7 +163,7 @@ func read_local(loop *asio.EventLoop, ev *asio.Event) (error) {
 	return nerr
 }
 
-func read_remote(loop *asio.EventLoop, ev *asio.Event) (error) {
+func read_remote(loop *asio.EventLoop, ev *asio.Event) error {
 	n, nerr := asio.Recv(ev.Fd, loop.Packet)
 	if nerr == nil || nerr == asio.SUCCESS {
 		ctx := ev.Context.(*context)

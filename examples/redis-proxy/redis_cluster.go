@@ -3,7 +3,7 @@ package main
 import (
 	"errors"
 	"github.com/mymmsc/asio"
-	"github.com/mymmsc/goapi/redis"
+	"github.com/mymmsc/gox/redis"
 	"strings"
 )
 
@@ -105,7 +105,7 @@ func redisPing(v interface{}) error {
 	})
 }
 
-func redisCommand(fd int, cmd []byte, checkout func(reply []byte) error) (error) {
+func redisCommand(fd int, cmd []byte, checkout func(reply []byte) error) error {
 	//fmt.Printf("proxy to remote: request[%s]\n", cmd)
 	n, err := asio.Send(fd, cmd)
 	if err != nil {
