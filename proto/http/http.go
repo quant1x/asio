@@ -2,7 +2,7 @@ package http
 
 import (
 	"github.com/mymmsc/asio/util"
-	"github.com/mymmsc/goapi/errors"
+	"github.com/mymmsc/gox/errors"
 	"syscall"
 )
 
@@ -18,10 +18,10 @@ type HttpAction int
 
 const (
 	OP_NONE     HttpAction = iota
-	OP_HEADER    // 获取http-header
-	OP_LENGTH    // 获取http-header Content-Length
-	OP_BODY      // 读取http-body
-	OP_FINISHED  // HTTP协议解析完毕
+	OP_HEADER              // 获取http-header
+	OP_LENGTH              // 获取http-header Content-Length
+	OP_BODY                // 读取http-body
+	OP_FINISHED            // HTTP协议解析完毕
 )
 
 type Http struct {
@@ -49,18 +49,18 @@ type HttpResponse struct {
 	Http
 }
 
-func NewHttp() *Http  {
+func NewHttp() *Http {
 	return &Http{
-		op:OP_NONE,
-		gotheader:false,
-		keepalive:false,
-		chunked:false,
-		length:0,
-		read:0,
-		bread:0,
-		rwrote:0,
-		rwrite:0,
-		stream:nil,
+		op:        OP_NONE,
+		gotheader: false,
+		keepalive: false,
+		chunked:   false,
+		length:    0,
+		read:      0,
+		bread:     0,
+		rwrote:    0,
+		rwrite:    0,
+		stream:    nil,
 	}
 }
 

@@ -46,7 +46,7 @@ func NewRedisConnPool(addr string, size int) *RedisConnPool {
 	}
 
 	//创建一个连接池： 初始化5，最大连接30
-	poolConfig := &pool.PoolConfig{
+	poolConfig := &pool.Config{
 		InitialCap: 5,
 		MaxCap:     size,
 		Factory:    factory,
