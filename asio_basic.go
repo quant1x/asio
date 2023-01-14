@@ -28,10 +28,9 @@ type engine struct {
 	accepted uintptr        // accept counter
 }
 
-//type OpenHandler func(loop *EventLoop) (socket_t, syscall.Sockaddr, int, error)
 type EngineHandler func(loop *EventLoop) bool
 
-func CreateEngine(numLoops int, Openhandler EngineHandler) (*engine, error) {
+func CreateEngine(numLoops int, engineHandler EngineHandler) (*engine, error) {
 	// 计算出要使用的loops/Goroutine的正确数目
 	//numLoops := event.NumLoops
 	if numLoops <= 0 {
@@ -52,12 +51,12 @@ func CreateEngine(numLoops int, Openhandler EngineHandler) (*engine, error) {
 	defer func() {
 		// wait on a signal for shutdown
 		e.waitForShutdown()
-		/*
+
 		// notify all loops to close by closing all listeners
-		for _, l := range e.loops {
-			l.poll.Trigger(errClosing)
-		}
-		*/
+		//for _, l := range e.loops {
+		//	l.poll.Trigger(errClosing)
+		//}
+
 		// wait on all loops to complete reading events
 		e.wg.Wait()
 
@@ -66,7 +65,7 @@ func CreateEngine(numLoops int, Openhandler EngineHandler) (*engine, error) {
 			for _, c := range loop.events {
 				loop.CloseSocket(c)
 			}
-			loop.poll.Close()
+			_ = loop.poll.Close()
 		}
 		//println("-- server stopped")
 	}()
@@ -80,7 +79,7 @@ func CreateEngine(numLoops int, Openhandler EngineHandler) (*engine, error) {
 		loop.WaitFor = e.waitForStop
 
 		//l.poll.AddRead(ln.fd)
-		if Openhandler(loop) {
+		if engineHandler(loop) {
 			e.loops = append(e.loops, loop)
 		}
 	}
