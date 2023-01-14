@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-func accept(loop *asio.EventLoop, ev *asio.Event) (error) {
+func accept(loop *asio.EventLoop, ev *asio.Event) error {
 	nfd, rsa, err := asio.Accept(ev.Fd)
 	if err != nil {
 		return err
@@ -31,9 +31,8 @@ func accept(loop *asio.EventLoop, ev *asio.Event) (error) {
 	return nil
 }
 
-func read(loop *asio.EventLoop, ev *asio.Event) (error) {
-	var packet [0xFFFF]byte
-	n, err := asio.Recv(ev.Fd, packet[0:0])
+func read(loop *asio.EventLoop, ev *asio.Event) error {
+	n, err := asio.Recv(ev.Fd, loop.Packet[0:])
 	if err == nil || err == asio.SUCCESS {
 		//loop.Watch(ev, asio.AE_DEL|asio.AE_READABLE)
 		loop.Watch(ev, asio.AE_ADD|asio.AE_WRITABLE)
@@ -46,7 +45,7 @@ func read(loop *asio.EventLoop, ev *asio.Event) (error) {
 	return err
 }
 
-func write(loop *asio.EventLoop, ev *asio.Event) (error) {
+func write(loop *asio.EventLoop, ev *asio.Event) error {
 	var b []byte
 	var result = appendresp(b, "200 OK", "", "Hello World!\r\n")
 	n, err := asio.Send(ev.Fd, result)

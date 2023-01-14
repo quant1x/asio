@@ -30,15 +30,15 @@ func Socket() (socket_t, error) {
 		return SOCKET_INVALID, err
 	}
 	syscall.ForkLock.RUnlock()
-	/*
-	if err = syscall.SetNonblock(fd, true); err != nil {
-		syscall.Close(fd)
-		return SOCKET_INVALID, err
-	}*/
+
+	//if err = syscall.SetNonblock(fd, true); err != nil {
+	//	syscall.Close(fd)
+	//	return SOCKET_INVALID, err
+	//}
 	return fd, nil
 }
 
-// 在non-blocking模式下,
+// Accept 在non-blocking模式下,
 // 如果返回值为-1, 且errno == EAGAIN或errno == EWOULDBLOCK表示no connections没有新连接请求
 func Accept(fd socket_t) (socket_t, syscall.Sockaddr, error) {
 	var (
@@ -188,7 +188,7 @@ func Recv(fd socket_t, data []byte) (int, error) {
 			}
 		} else {
 			//err = ngx_socket_errno;
-			if (err == syscall.EAGAIN || err == syscall.EWOULDBLOCK || err == syscall.EINTR) {
+			if err == syscall.EAGAIN || err == syscall.EWOULDBLOCK || err == syscall.EINTR {
 				//ngx_log_debug0(NGX_LOG_DEBUG_EVENT, c->log, err, "recv() not ready");
 				err = EAGAIN
 				if totlen > 0 {
