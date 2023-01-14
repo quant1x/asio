@@ -4,8 +4,8 @@ import (
 	"syscall"
 )
 
-type EventHandler = func(loop *EventLoop, ev *Event) (error)
-type DataHandler  func(cb *Callback) (error)
+type EventHandler func(loop *EventLoop, ev *Event) error
+type DataHandler func(cb *Callback) error
 
 type Event struct {
 	Fd       socket_t
@@ -27,13 +27,13 @@ type Callback struct {
 	OnAccept  DataHandler
 	OnConnect DataHandler
 	Opened    func(addr syscall.Sockaddr)
-	OnRead    func(cb *Callback, packet[]byte) (error)
+	OnRead    func(cb *Callback, packet []byte) error
 	OnWrite   func(ev *Callback) ([]byte, error)
 	OnTimeout DataHandler
 	Closed    DataHandler
 }
 
-func (e *Event)delegate(handler interface{}) (EventHandler, DataHandler)  {
+func (e *Event) delegate(handler interface{}) (EventHandler, DataHandler) {
 	var eh EventHandler = nil
 	var dh DataHandler = nil
 	var ok bool = false
@@ -51,18 +51,18 @@ func (e *Event)delegate(handler interface{}) (EventHandler, DataHandler)  {
 	return eh, dh
 }
 
-func DefaultAccept(loop *EventLoop, ev *Event) (error) {
+func DefaultAccept(loop *EventLoop, ev *Event) error {
 	nfd, rsa, err := Accept(ev.Fd)
 	if err != nil {
 		return err
 	}
 	ncb := &Callback{}
 	nev := &Event{
-		Fd:    nfd,
-		Addr:  rsa,
-		Read:  DefaultRead,
-		Write: DefaultWrite,
-		Close: DefaultClose,
+		Fd:      nfd,
+		Addr:    rsa,
+		Read:    DefaultRead,
+		Write:   DefaultWrite,
+		Close:   DefaultClose,
 		Context: ncb,
 	}
 	loop.Watch(nev, AE_ADD|AE_READABLE)
@@ -75,7 +75,7 @@ func DefaultAccept(loop *EventLoop, ev *Event) (error) {
 	return nil
 }
 
-func DefaultClose(loop *EventLoop, ev *Event) (error) {
+func DefaultClose(loop *EventLoop, ev *Event) error {
 	var err error = nil
 	//owner := ev.Context
 
@@ -90,7 +90,7 @@ func DefaultClose(loop *EventLoop, ev *Event) (error) {
 	return err
 }
 
-func DefaultRead(loop *EventLoop, ev *Event) (error) {
+func DefaultRead(loop *EventLoop, ev *Event) error {
 	n, nerr := Recv(ev.Fd, loop.Packet[0:])
 	if nerr == nil || nerr == SUCCESS {
 		//in := loop.Packet[0:n]
@@ -130,7 +130,7 @@ func DefaultRead(loop *EventLoop, ev *Event) (error) {
 	return nerr
 }
 
-func DefaultWrite(loop *EventLoop, ev *Event) (error) {
+func DefaultWrite(loop *EventLoop, ev *Event) error {
 	var nerr error
 	var data []byte
 	if ev.Context != nil {
