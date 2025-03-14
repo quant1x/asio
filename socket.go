@@ -2,8 +2,8 @@ package asio
 
 import (
 	"fmt"
-	"github.com/mymmsc/asio/os"
-	"github.com/mymmsc/asio/reuseport"
+	"github.com/quant1x/asio/os"
+	"github.com/quant1x/asio/reuseport"
 	"syscall"
 	"time"
 )

@@ -1,5 +1,5 @@
-module github.com/mymmsc/asio
+module github.com/quant1x/asio
 
-go 1.19
+go 1.24
 
-require github.com/mymmsc/gox v1.2.1
+require golang.org/x/sys v0.31.0

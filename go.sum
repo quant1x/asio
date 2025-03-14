@@ -1,2 +1,2 @@
-github.com/mymmsc/gox v1.2.1 h1:cHs1KDWrN/xmTPfy5ebR8Oqf1PfgCoNKwUnaTDv1MXg=
-github.com/mymmsc/gox v1.2.1/go.mod h1:I8m8f5x93XQeKRnP7bP5tzXiva6mtYVAB1S0lQY+OLo=
+golang.org/x/sys v0.31.0 h1:ioabZlmFYtWhL+TRYpcnNlLwhyxaM9kWTDEmfnprqik=
+golang.org/x/sys v0.31.0/go.mod h1:BJP2sWEmIv4KK5OTEluFJCKSidICx8ciO85XgH3Ak8k=
