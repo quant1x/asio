@@ -64,7 +64,7 @@ func main() {
 	//defer syscall.Close(socket)
 	// 设置为非阻塞模式
 	var mode uint32 = 1
-	if err := windows.SetHandleInformation(windows.Handle(socket), windows.HANDLE_FLAG_INHERIT, mode); err != nil {
+	if err := windows.SetHandleInformation(socket, windows.HANDLE_FLAG_INHERIT, mode); err != nil {
 		panic(err)
 	}
 	//var mode uint32 = 1
@@ -141,7 +141,7 @@ func main() {
 	})
 
 	var flags uint32
-	err = windows.WSASend(windows.Handle(socket), &sendBufs[0], 1, nil, flags, &sendOverlapped, nil)
+	err = windows.WSASend(socket, &sendBufs[0], 1, nil, flags, &sendOverlapped, nil)
 	if err != nil && err != syscall.ERROR_IO_PENDING {
 		log.Fatal("WSASend failed:", err)
 	}
