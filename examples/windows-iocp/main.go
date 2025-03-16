@@ -2,6 +2,7 @@ package main
 
 import (
 	"errors"
+	"fmt"
 	"log"
 	"runtime"
 	"sync"
@@ -67,6 +68,13 @@ func main() {
 	if err := windows.SetHandleInformation(socket, windows.HANDLE_FLAG_INHERIT, mode); err != nil {
 		panic(err)
 	}
+	// 设置超时时间（以毫秒为单位）
+	timeout := uint32(5000) // 5秒
+	err = windows.SetsockoptInt(socket, windows.SOL_SOCKET, windows.SO_RCVTIMEO, int(timeout))
+	if err != nil {
+		fmt.Println("SetsockoptInt failed:", err)
+		return
+	}
 	//var mode uint32 = 1
 	//if code := syscall.SetHandleInformation(syscall.Handle(socket), syscall.HANDLE_FLAG_INHERIT, mode); code != nil {
 	//	panic(code)
@@ -102,7 +110,16 @@ func main() {
 	if err != nil && !errors.Is(err, syscall.ERROR_IO_PENDING) {
 		panic(err)
 	}
+	// 等待连接完成
+	overlapped1 := &windows.Overlapped{}
+	var bytesTransferred uint32
+	err = windows.GetOverlappedResult(socket, overlapped1, &bytesTransferred, true)
+	if err != nil {
+		fmt.Println("Connection failed:", err)
+		return
+	}
 
+	fmt.Println("Connected successfully!")
 	// 处理完成端口事件
 	go func() {
 		var bytesTransferred uint32
