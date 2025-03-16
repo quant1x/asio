@@ -84,8 +84,8 @@ func main() {
 	if err := windows.Bind(socket, localAddr); err != nil {
 		panic(err)
 	}
-	// 将socket关联到IOCP
-	_iocp, err := windows.CreateIoCompletionPort(socket, iocp, 0, 0)
+	// 将socket关联到IOCP, 将socket作为completionKey
+	_iocp, err := windows.CreateIoCompletionPort(socket, iocp, uintptr(socket), 0)
 	if err != nil {
 		log.Fatal("CreateIoCompletionPort failed:", err)
 	}
@@ -110,16 +110,16 @@ func main() {
 	if err != nil && !errors.Is(err, syscall.ERROR_IO_PENDING) {
 		panic(err)
 	}
-	// 等待连接完成
-	overlapped1 := &windows.Overlapped{}
-	var bytesTransferred uint32
-	err = windows.GetOverlappedResult(socket, overlapped1, &bytesTransferred, true)
-	if err != nil {
-		fmt.Println("Connection failed:", err)
-		return
-	}
-
-	fmt.Println("Connected successfully!")
+	//// 等待连接完成
+	//overlapped1 := &windows.Overlapped{}
+	//var bytesTransferred uint32
+	//err = windows.GetOverlappedResult(socket, overlapped1, &bytesTransferred, true)
+	//if err != nil {
+	//	fmt.Println("Connection failed:", err)
+	//	return
+	//}
+	//
+	//fmt.Println("Connected successfully!")
 	// 处理完成端口事件
 	go func() {
 		var bytesTransferred uint32
