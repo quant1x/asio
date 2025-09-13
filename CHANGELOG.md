@@ -3,9 +3,25 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.1.1] - 2025-09-13
+### Changed
+- add LICENSE.
+
+Signed-off-by: 王布衣 <wangfengxy@sina.cn>
+- 去掉windows.Handle的强制转换
+- 补充IOCP缺失的GetQueuedCompletionStatusEx
+- 补充连接ConnectEx的超时和连接成功的判断
+- 实验性代码, 不能运行
+- 完成一次iocp完整的网络操作
+- 调整绑定socket到iocp句柄的completionKey为socket
+- 新增一个http压力测试工具
+- 更新go最低支持版本到1.25
+- sort imports
+
 ## [1.1.0] - 2025-03-14
 ### Changed
 - 新增实验性质的windows-iocp代码
+- update changelog
 
 ## [1.0.22] - 2023-01-14
 ### Changed
@@ -30,7 +46,8 @@ All notable changes to this project will be documented in this file.
 - add source
 
 
-[Unreleased]: https://gitee.com/quant1x/asio.git/compare/v1.1.0...HEAD
+[Unreleased]: https://gitee.com/quant1x/asio.git/compare/v1.1.1...HEAD
+[1.1.1]: https://gitee.com/quant1x/asio.git/compare/v1.1.0...v1.1.1
 [1.1.0]: https://gitee.com/quant1x/asio.git/compare/v1.0.22...v1.1.0
 [1.0.22]: https://gitee.com/quant1x/asio.git/compare/v1.0.21...v1.0.22
 [1.0.21]: https://gitee.com/quant1x/asio.git/compare/v1.0.20...v1.0.21
