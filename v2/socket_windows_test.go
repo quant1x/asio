@@ -3,12 +3,13 @@ package v2
 import (
 	"errors"
 	"fmt"
-	"golang.org/x/sys/windows"
 	"log"
 	"runtime"
 	"syscall"
 	"testing"
 	"unsafe"
+
+	"golang.org/x/sys/windows"
 )
 
 func Test_socket(t *testing.T) {
