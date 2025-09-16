@@ -118,7 +118,7 @@ func (c *channelPool) Acquire() (any, error) {
 				if wrapConn.t.Add(timeout).Before(time.Now()) {
 					logger.Warnf("空闲超时, 关闭连接.")
 					//丢弃并关闭该连接
-					_ = c.CloseConn(wrapConn.conn)
+					_ = c.CloseConnection(wrapConn.conn)
 					continue
 				}
 			}
@@ -126,7 +126,7 @@ func (c *channelPool) Acquire() (any, error) {
 			if c.cbPing != nil {
 				if err := c.Ping(wrapConn.conn); err != nil {
 					logger.Warnf("ping失败, 关闭连接.")
-					_ = c.CloseConn(wrapConn.conn)
+					_ = c.CloseConnection(wrapConn.conn)
 					continue
 				}
 			}
@@ -151,7 +151,7 @@ func (c *channelPool) Acquire() (any, error) {
 						//丢弃并关闭该连接
 						//logger.Warnf("default-1: 2-1-1")
 						logger.Warnf("超时, 关闭连接.")
-						_ = c.CloseConn(ret.idleConn.conn)
+						_ = c.CloseConnection(ret.idleConn.conn)
 						continue
 					}
 					//logger.Warnf("default-1: 2-2")
@@ -191,7 +191,7 @@ func (c *channelPool) Release(conn any) error {
 	if c.conns == nil {
 		c.mu.Unlock()
 		logger.Warnf("队列无效, 关闭连接.")
-		return c.CloseConn(conn)
+		return c.CloseConnection(conn)
 	}
 
 	if l := len(c.connReqs); l > 0 {
@@ -212,13 +212,13 @@ func (c *channelPool) Release(conn any) error {
 			c.mu.Unlock()
 			//连接池已满，直接关闭该连接
 			logger.Warnf("返还连接, 连接池已满, 关闭连接.")
-			return c.CloseConn(conn)
+			return c.CloseConnection(conn)
 		}
 	}
 }
 
-// CloseConn 关闭单条连接
-func (c *channelPool) CloseConn(conn any) error {
+// CloseConnection 关闭单条连接
+func (c *channelPool) CloseConnection(conn any) error {
 	if conn == nil {
 		return ErrIsNil
 	}

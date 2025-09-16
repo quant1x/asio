@@ -215,7 +215,7 @@ func TestPoolConcurrent2(t *testing.T) {
 			go func(i int) {
 				conn, _ := p.Acquire()
 				time.Sleep(time.Millisecond * time.Duration(rand.Intn(100)))
-				p.CloseConn(conn)
+				p.CloseConnection(conn)
 				wg.Done()
 			}(i)
 		}
@@ -226,7 +226,7 @@ func TestPoolConcurrent2(t *testing.T) {
 		go func(i int) {
 			conn, _ := p.Acquire()
 			time.Sleep(time.Millisecond * time.Duration(rand.Intn(100)))
-			p.CloseConn(conn)
+			p.CloseConnection(conn)
 			wg.Done()
 		}(i)
 	}

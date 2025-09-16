@@ -17,8 +17,8 @@ type ConnectionPool interface {
 	Acquire() (any, error)
 	// Release 归还一个连接
 	Release(any) error
-	// CloseConn 关闭连接
-	CloseConn(any) error
+	// CloseConnection 关闭连接
+	CloseConnection(any) error
 	// CloseAll 关闭全部连接
 	CloseAll()
 	// Close 关闭连接池, 释放所有连接
