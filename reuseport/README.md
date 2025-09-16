@@ -4,10 +4,12 @@
 [![codecov](https://codecov.io/gh/kavu/go_reuseport/branch/master/graph/badge.svg)](https://codecov.io/gh/kavu/go_reuseport)
 [![GoDoc](https://godoc.org/github.com/kavu/go_reuseport?status.png)](https://godoc.org/github.com/kavu/go_reuseport)
 
-**GO_REUSEPORT** is a little expirement to create a `net.Listener` that supports [SO_REUSEPORT](http://lwn.net/Articles/542629/) socket option.
+**GO_REUSEPORT** is a little expirement to create a `net.Listener` that
+supports [SO_REUSEPORT](http://lwn.net/Articles/542629/) socket option.
 
-For now, Darwin and Linux (from 3.9) systems are supported. I'll be pleased if you'll test other systems and tell me the results.
- documentation on [godoc.org](http://godoc.org/github.com/kavu/go_reuseport "go_reuseport documentation").
+For now, Darwin and Linux (from 3.9) systems are supported. I'll be pleased if you'll test other systems and tell me the
+results.
+documentation on [godoc.org](http://godoc.org/github.com/kavu/go_reuseport "go_reuseport documentation").
 
 ## Example ##
 
@@ -44,5 +46,7 @@ Now you can run several instances of this tiny server without `Address already i
 
 ## Thanks
 
-Inspired by [Artur Siekielski](https://github.com/aartur) [post](http://freeprogrammersblog.vhex.net/post/linux-39-introdued-new-way-of-writing-socket-servers/2) about `SO_REUSEPORT`.
+Inspired
+by [Artur Siekielski](https://github.com/aartur) [post](http://freeprogrammersblog.vhex.net/post/linux-39-introdued-new-way-of-writing-socket-servers/2)
+about `SO_REUSEPORT`.
 

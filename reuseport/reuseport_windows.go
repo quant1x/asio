@@ -1,3 +1,4 @@
+//go:build windows
 // +build windows
 
 // Copyright (C) 2017 Ma Weiwei, Max Riveiro

@@ -2,9 +2,10 @@ package v2
 
 import (
 	"fmt"
-	"golang.org/x/sys/windows"
 	"net"
 	"strconv"
+
+	"golang.org/x/sys/windows"
 )
 
 // 解析 URL（如 "example.com:80"）为 windows.Sockaddr

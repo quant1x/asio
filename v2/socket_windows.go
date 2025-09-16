@@ -1,8 +1,9 @@
 package v2
 
 import (
-	"golang.org/x/sys/windows"
 	"log"
+
+	"golang.org/x/sys/windows"
 )
 
 // 跨平台的套接字类型重定向

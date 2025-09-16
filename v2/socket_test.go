@@ -2,8 +2,9 @@ package v2
 
 import (
 	"fmt"
-	"golang.org/x/sys/windows"
 	"testing"
+
+	"golang.org/x/sys/windows"
 )
 
 func Test_resolveSockaddr(t *testing.T) {

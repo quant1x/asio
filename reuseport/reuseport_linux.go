@@ -1,3 +1,4 @@
+//go:build linux
 // +build linux
 
 // Copyright (C) 2017 Ma Weiwei, Max Riveiro
