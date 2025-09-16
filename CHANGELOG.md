@@ -3,9 +3,14 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.1.3] - 2025-09-16
+### Changed
+- 调整测试代码包路径
+
 ## [1.1.2] - 2025-09-16
 ### Changed
 - 重新整理asio库, 暂时屏蔽以前的实现方式
+- update changelog
 
 ## [1.1.1] - 2025-09-13
 ### Changed
@@ -51,7 +56,8 @@ Signed-off-by: 王布衣 <wangfengxy@sina.cn>
 - add source
 
 
-[Unreleased]: https://gitee.com/quant1x/asio.git/compare/v1.1.2...HEAD
+[Unreleased]: https://gitee.com/quant1x/asio.git/compare/v1.1.3...HEAD
+[1.1.3]: https://gitee.com/quant1x/asio.git/compare/v1.1.2...v1.1.3
 [1.1.2]: https://gitee.com/quant1x/asio.git/compare/v1.1.1...v1.1.2
 [1.1.1]: https://gitee.com/quant1x/asio.git/compare/v1.1.0...v1.1.1
 [1.1.0]: https://gitee.com/quant1x/asio.git/compare/v1.0.22...v1.1.0
