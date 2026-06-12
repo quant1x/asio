@@ -8,7 +8,7 @@ import (
 	"syscall"
 	"time"
 
-	"gitee.com/quant1x/asio"
+	"github.com/quant1x/asio"
 )
 
 const addr string = "127.0.0.1:8080"

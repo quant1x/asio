@@ -5,8 +5,8 @@ import (
 	"syscall"
 	"time"
 
-	"gitee.com/quant1x/asio/backup/os"
-	"gitee.com/quant1x/asio/reuseport"
+	"github.com/quant1x/asio/backup/os"
+	"github.com/quant1x/asio/reuseport"
 )
 
 type TcpSocket struct {

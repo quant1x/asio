@@ -66,15 +66,15 @@ Signed-off-by: 王布衣 <wangfengxy@sina.cn>
 - add source
 
 
-[Unreleased]: https://gitee.com/quant1x/asio.git/compare/v1.1.5...HEAD
-[1.1.5]: https://gitee.com/quant1x/asio.git/compare/v1.1.4...v1.1.5
-[1.1.4]: https://gitee.com/quant1x/asio.git/compare/v1.1.3...v1.1.4
-[1.1.3]: https://gitee.com/quant1x/asio.git/compare/v1.1.2...v1.1.3
-[1.1.2]: https://gitee.com/quant1x/asio.git/compare/v1.1.1...v1.1.2
-[1.1.1]: https://gitee.com/quant1x/asio.git/compare/v1.1.0...v1.1.1
-[1.1.0]: https://gitee.com/quant1x/asio.git/compare/v1.0.22...v1.1.0
-[1.0.22]: https://gitee.com/quant1x/asio.git/compare/v1.0.21...v1.0.22
-[1.0.21]: https://gitee.com/quant1x/asio.git/compare/v1.0.20...v1.0.21
-[1.0.20]: https://gitee.com/quant1x/asio.git/compare/v1.0.19...v1.0.20
+[Unreleased]: https://github.com/quant1x/asio.git/compare/v1.1.5...HEAD
+[1.1.5]: https://github.com/quant1x/asio.git/compare/v1.1.4...v1.1.5
+[1.1.4]: https://github.com/quant1x/asio.git/compare/v1.1.3...v1.1.4
+[1.1.3]: https://github.com/quant1x/asio.git/compare/v1.1.2...v1.1.3
+[1.1.2]: https://github.com/quant1x/asio.git/compare/v1.1.1...v1.1.2
+[1.1.1]: https://github.com/quant1x/asio.git/compare/v1.1.0...v1.1.1
+[1.1.0]: https://github.com/quant1x/asio.git/compare/v1.0.22...v1.1.0
+[1.0.22]: https://github.com/quant1x/asio.git/compare/v1.0.21...v1.0.22
+[1.0.21]: https://github.com/quant1x/asio.git/compare/v1.0.20...v1.0.21
+[1.0.20]: https://github.com/quant1x/asio.git/compare/v1.0.19...v1.0.20
 
-[1.0.19]: https://gitee.com/quant1x/asio.git/releases/tag/v1.0.19
+[1.0.19]: https://github.com/quant1x/asio.git/releases/tag/v1.0.19
