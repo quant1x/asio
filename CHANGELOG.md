@@ -3,9 +3,15 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.2.1] - 2026-10-09
+### Changed
+- 调整go版本到1.27.2
+- release version 1.2.1
+
 ## [1.2.0] - 2026-06-12
 ### Changed
 - 调整包仓库地址
+- update changelog
 
 ## [1.1.5] - 2025-09-16
 ### Changed
@@ -30,8 +36,7 @@ All notable changes to this project will be documented in this file.
 ## [1.1.1] - 2025-09-13
 ### Changed
 - add LICENSE.
-
-Signed-off-by: 王布衣 <wangfengxy@sina.cn>
+  Signed-off-by: 王布衣 <wangfengxy@sina.cn>
 - 去掉windows.Handle的强制转换
 - 补充IOCP缺失的GetQueuedCompletionStatusEx
 - 补充连接ConnectEx的超时和连接成功的判断
@@ -71,16 +76,17 @@ Signed-off-by: 王布衣 <wangfengxy@sina.cn>
 - add source
 
 
-[Unreleased]: https://gitee.com/quant1x/asio.git/compare/v1.2.0...HEAD
-[1.2.0]: https://gitee.com/quant1x/asio.git/compare/v1.1.5...v1.2.0
-[1.1.5]: https://gitee.com/quant1x/asio.git/compare/v1.1.4...v1.1.5
-[1.1.4]: https://gitee.com/quant1x/asio.git/compare/v1.1.3...v1.1.4
-[1.1.3]: https://gitee.com/quant1x/asio.git/compare/v1.1.2...v1.1.3
-[1.1.2]: https://gitee.com/quant1x/asio.git/compare/v1.1.1...v1.1.2
-[1.1.1]: https://gitee.com/quant1x/asio.git/compare/v1.1.0...v1.1.1
-[1.1.0]: https://gitee.com/quant1x/asio.git/compare/v1.0.22...v1.1.0
-[1.0.22]: https://gitee.com/quant1x/asio.git/compare/v1.0.21...v1.0.22
-[1.0.21]: https://gitee.com/quant1x/asio.git/compare/v1.0.20...v1.0.21
-[1.0.20]: https://gitee.com/quant1x/asio.git/compare/v1.0.19...v1.0.20
+[Unreleased]: https://gitee.com/quant1x/asio/compare/v1.2.1...HEAD
+[1.2.1]: https://gitee.com/quant1x/asio/compare/v1.2.0...v1.2.1
+[1.2.0]: https://gitee.com/quant1x/asio/compare/v1.1.5...v1.2.0
+[1.1.5]: https://gitee.com/quant1x/asio/compare/v1.1.4...v1.1.5
+[1.1.4]: https://gitee.com/quant1x/asio/compare/v1.1.3...v1.1.4
+[1.1.3]: https://gitee.com/quant1x/asio/compare/v1.1.2...v1.1.3
+[1.1.2]: https://gitee.com/quant1x/asio/compare/v1.1.1...v1.1.2
+[1.1.1]: https://gitee.com/quant1x/asio/compare/v1.1.0...v1.1.1
+[1.1.0]: https://gitee.com/quant1x/asio/compare/v1.0.22...v1.1.0
+[1.0.22]: https://gitee.com/quant1x/asio/compare/v1.0.21...v1.0.22
+[1.0.21]: https://gitee.com/quant1x/asio/compare/v1.0.20...v1.0.21
+[1.0.20]: https://gitee.com/quant1x/asio/compare/v1.0.19...v1.0.20
 
-[1.0.19]: https://gitee.com/quant1x/asio.git/releases/tag/v1.0.19
+[1.0.19]: https://gitee.com/quant1x/asio/releases/tag/v1.0.19
