@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.2.2] - 2026-10-10
+### Changed
+- 更新依赖库版本
+- release version 1.2.2
+
 ## [1.2.1] - 2026-10-09
 ### Changed
 - 调整go版本到1.27.2
@@ -76,7 +81,8 @@ All notable changes to this project will be documented in this file.
 - add source
 
 
-[Unreleased]: https://gitee.com/quant1x/asio/compare/v1.2.1...HEAD
+[Unreleased]: https://gitee.com/quant1x/asio/compare/v1.2.2...HEAD
+[1.2.2]: https://gitee.com/quant1x/asio/compare/v1.2.1...v1.2.2
 [1.2.1]: https://gitee.com/quant1x/asio/compare/v1.2.0...v1.2.1
 [1.2.0]: https://gitee.com/quant1x/asio/compare/v1.1.5...v1.2.0
 [1.1.5]: https://gitee.com/quant1x/asio/compare/v1.1.4...v1.1.5
